@@ -1,8 +1,8 @@
 from flask import Flask, jsonify
-from extensions import db, jwt
-from auth import auth_bp
-from users import user_bp
-from models import User, TokenBlocklist
+from app.extensions import db, jwt
+from app.users.auth import auth_bp
+from app.users.users import user_bp
+from app.users.models import User, TokenBlocklist
 
 
 def create_app():
