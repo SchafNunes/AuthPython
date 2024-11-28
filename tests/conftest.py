@@ -31,3 +31,20 @@ def test_client():
     db.drop_all()
     ctx.pop()
 
+@pytest.fixture(scope="module")
+def test_model():
+
+    flask_app = create_app(TestConfig)
+
+    testing_model = flask_app.test_model()
+
+    ctx = flask_app.app_context()
+    ctx.push()
+
+    db.create_all()
+
+    yield testing_model  
+
+    db.session.remove()
+    db.drop_all()
+    ctx.pop()
