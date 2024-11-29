@@ -6,11 +6,14 @@ from app.users.users import user_bp
 from app.users.models import User, TokenBlocklist
 
 
-def create_app():
+def create_app(config_class=None):
 
     app = Flask(__name__)
 
-    app.config.from_prefixed_env()
+    if config_class:
+        app.config.from_object(config_class)
+    else:
+        app.config.from_prefixed_env()
 
     db.init_app(app)
     jwt.init_app(app)
