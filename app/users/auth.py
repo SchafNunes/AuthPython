@@ -82,7 +82,7 @@ def login_user():
     
     return jsonify({"error": "Invalid username or password"}), 400
 
-@auth_bp.get('/whoami')
+@auth_bp.get('/userinfo')
 @jwt_required()
 def whoami():
     return jsonify(
