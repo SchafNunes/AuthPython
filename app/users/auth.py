@@ -12,6 +12,35 @@ auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.post('/register')
 def register_user():
+
+    """
+    Registre um novo usuário
+    ---
+    tags:
+      - Auth
+    parameters:
+      - in: body
+        name: body
+        schema:
+          type: object
+          required:
+            - username
+            - email
+            - password
+          properties:
+            username:
+              type: string
+            email:
+              type: string
+            password:
+              type: string
+    responses:
+      201:
+        description: User created
+      403:
+        description: User already exists
+    """
+    # ...
     data = request.get_json()
 
     user = User.get_user_by_username(username= data.get('username'))
