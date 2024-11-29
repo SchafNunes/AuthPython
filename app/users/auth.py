@@ -84,7 +84,7 @@ def login_user():
 
 @auth_bp.get('/userinfo')
 @jwt_required()
-def whoami():
+def userinfo():
     return jsonify(
         {
             "message": "message",
